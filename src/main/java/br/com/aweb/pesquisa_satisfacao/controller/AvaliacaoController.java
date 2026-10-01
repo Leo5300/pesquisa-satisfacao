@@ -3,7 +3,6 @@ package br.com.aweb.pesquisa_satisfacao.controller;
 import java.util.Map;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +22,13 @@ import br.com.aweb.pesquisa_satisfacao.service.SetorService;
 @RequestMapping("/avaliar")
 public class AvaliacaoController {
 
-    @Autowired
-    private AvaliacaoService avaliacaoService;
+    private final AvaliacaoService avaliacaoService;
+    private final SetorService setorService;
 
-    @Autowired
-    private SetorService setorService;
+    public AvaliacaoController(AvaliacaoService avaliacaoService, SetorService setorService) {
+        this.avaliacaoService = avaliacaoService;
+        this.setorService = setorService;
+    }
 
     @GetMapping("/{setorId}")
     public ModelAndView salvar(@PathVariable Long setorId) {

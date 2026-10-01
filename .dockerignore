@@ -1,0 +1,9 @@
+.git
+.gitignore
+.gitattributes
+target/
+.vscode/
+.idea/
+*.iml
+HELP.md
+docker-compose.yml
